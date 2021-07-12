@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function()
+        {
+            function intDiv(a,b)
+            {
+            var result = a/b;
+            if(result>=0)
+            return Math.floor(result);
+            else
+            return Math.ceil(result);
+            }
+
+            function HextoDec(a) 
+            {
+                var i=0,n=a.length-1,temp;
+               var sum=0;
+              while(n>=0)
+               {
+                   temp=a[i];
+                   switch (temp) 
+                   {
+                case "a":sum=sum+(parseInt(10)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                case "b":sum=sum+(parseInt(11)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                case "c":sum=sum+(parseInt(12)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                case "d":sum=sum+(parseInt(13)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                case "e":sum=sum+(parseInt(14)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                case "f":sum=sum+(parseInt(15)*Math.pow(16,n));
+                    n=n-1;
+                    i=i+1;
+                           break;
+                   
+                       default:
+                       sum=sum+(parseInt(temp)*Math.pow(16,n));
+                       n=n-1;
+                       i=i+1;
+                           break;
+                   }
+               }
+               return (sum);
+            }
+
+            function DectoBin(a) 
+            {
+                var x="",temp=0,n=a;
+               while(a>0)
+               {
+               temp=a%2;
+                x=(temp.toString())+x;
+                a=intDiv(a,2);
+               }   
+               return x;
+            }
+
+            function DectoOct(a) 
+            {
+                var x="",temp=0,n=a;
+               while(a>0)
+               {
+               temp=a%8;
+                x=(temp.toString())+x;
+                a=intDiv(a,8);
+               }   
+               return x;
+            }
+            $('#bin').click(function()
+            {
+                var a=$('#number').val();
+                var decimal = HextoDec(a);
+                var binary =DectoBin(decimal);
+             $('#showBin').text("Binary of HexaDecimal "+ a +" is :"+binary);
+              $('#showOct').text("");
+              $('#showDec').text("");
+            });
+
+            $('#dec').click(function()
+            {
+                var a=$('#number').val();
+                var decimal = HextoDec(a);
+             $('#showBin').text("");
+              $('#showOct').text("");
+              $('#showDec').text("Decimal of HexaDecimal "+ a +" is :"+decimal);
+            });
+
+            $('#oct').click(function()
+            {
+                var a=$('#number').val();
+                var decimal = HextoDec(a);
+                var oct=DectoOct(decimal);
+             $('#showBin').text("");
+              $('#showDec').text("");
+              $('#showOct').text("Octal of HexaDecimal "+ a +" is :"+oct);
+            });
+
+        });
+    </script>
+</head>
+<body style="background-color: rgba(26, 226, 149, 0.514);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="text-success">HexaDecimal</h1>
+        </div>
+        <div class="row justify-content-center">
+            <input type="text" class="m-2 rounded " placeholder="Enter the Number" id="number" required>  
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <button id="bin" class="btn-sm btn btn-info m-2 rounded">Convert to Binary</button>
+            <button id="oct" class="btn-sm btn btn-info m-2 rounded">Convert to Octal</button>          
+            <button id="dec" class="btn-sm btn btn-info m-2 rounded">Convert to Decimal</button>          
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <div id="showBin" class="m-2"></div>
+            <div id="showOct" class="m-2"></div> 
+            <div id="showDec" class="m-2"></div> 
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <ol class="list">
+                <a href="index.html" class="list-item list-item-link"><li>Decimal to Other Number Systems</li></a>
+                <a href="octa_to_others.html" class="list-item list-item-link"><li>Octal to Other Number Systems.</li></a>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
