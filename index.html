@@ -30,6 +30,8 @@
                 a=intDiv(a,2);
                }
                 $('#showBin').text("Binary of "+n+" is : "+x);
+                $('#showHex').text("");
+                $('#showOct').text("");
             }
             });
             $('#oct').click(function()
@@ -45,6 +47,8 @@
                 a=intDiv(a,8);
                }
                 $('#showOct').text("Octal of "+n+" is : "+x);
+                $('#showHex').text("");
+                $('#showBin').text("");
                 }  
             });
             $('#hex').click(function()
@@ -89,6 +93,8 @@
                 a=intDiv(a,16);
                }
                 $('#showHex').text("HexaDecimal of "+n+" is : "+x);
+                $('#showBin').text("");
+                $('#showOct').text("");
             }
             });
         });
@@ -106,10 +112,17 @@
             <button id="hex" class="btn-sm btn btn-info m-2 rounded">Convert to HexaDecimal</button>          
         </div>
         <hr>
-        <div class="row justify-content-center strong">
-            <p id="showBin" class="m-2"><b></b></p>
-            <p id="showOct" class="m-2"><b></b></p> 
-            <p id="showHex" class="m-2"><b></b></p> 
+        <div class="row justify-content-center">
+            <div id="showBin" class="m-2"></div>
+            <div id="showOct" class="m-2"></div> 
+            <div id="showHex" class="m-2"></div> 
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <ol class="list">
+                <a href="hexa_to_others.html" class="list-item list-item-link"><li>Hexa</li></a>
+                <a href="#" class="list-item list-item-link"><li>Oct</li></a>
+            </ol>
         </div>
     </div>
 </body>
