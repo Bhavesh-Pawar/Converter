@@ -39,7 +39,7 @@
             var a=parseInt($('#number').val());
                 if(!isNaN(a))
                 {
-                    var x="",temp=0,n=a;
+                var x="",temp=0,n=a;
                while(a>0)
                {
                temp=a%8;
@@ -103,6 +103,9 @@
 <body style="background-color: rgba(26, 226, 149, 0.514);">
     <div class="container">
         <div class="row justify-content-center">
+            <h1 class="text-success">Decimal</h1>
+        </div>
+        <div class="row justify-content-center">
             <input type="number" class="m-2 rounded " placeholder="Enter the Number" id="number" required>  
         </div>
         <hr>
@@ -116,6 +119,13 @@
             <div id="showBin" class="m-2"></div>
             <div id="showOct" class="m-2"></div> 
             <div id="showHex" class="m-2"></div> 
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <ol class="list">
+                <a href="hexa_to_others.html" class="list-item list-item-link"><li>HexaDecimal to Other Number System</li></a>
+                <a href="octa_to_others.html" class="list-item list-item-link"><li>Octal to Other Number System</li></a>
+            </ol>
         </div>
     </div>
 </body>
