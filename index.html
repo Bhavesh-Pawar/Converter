@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function()
+        {
+            function intDiv(a,b)
+            {
+            var result = a/b;
+            if(result>=0)
+            return Math.floor(result);
+            else
+            return Math.ceil(result);
+            }
+            $('#bin').click(function()
+            {
+                var a=parseInt($('#number').val());
+                if(!isNaN(a))
+            {
+               var x="",temp=0,n=a;
+               while(a>0)
+               {
+               temp=a%2;
+                x=(temp.toString())+x;
+                a=intDiv(a,2);
+               }
+                $('#showBin').text("Binary of "+n+" is : "+x);
+            }
+            });
+            $('#oct').click(function()
+            {
+            var a=parseInt($('#number').val());
+                if(!isNaN(a))
+                {
+                    var x="",temp=0,n=a;
+               while(a>0)
+               {
+               temp=a%8;
+                x=(temp.toString())+x;
+                a=intDiv(a,8);
+               }
+                $('#showOct').text("Octal of "+n+" is : "+x);
+                }  
+            });
+            $('#hex').click(function()
+            {
+            var a=parseInt($('#number').val());
+            if(!isNaN(a))
+            {
+                var x="",temp=0,n=a;
+               while(a>0)
+               {
+               temp=a%16;
+                switch (temp) 
+                {
+                    case 10:
+                        x="a"+x;
+                        break;
+
+                    case 11:
+                        x="b"+x;
+                        break;
+
+                    case 12:
+                        x="c"+x;
+                        break;
+
+                    case 13:
+                        x="d"+x;
+                        break;
+
+                    case 14:
+                        x="e"+x;
+                        break;
+
+                    case 15:
+                        x="f"+x;
+                        break; 
+
+                    default:
+                    x=(temp.toString())+x;
+                        break;
+                }
+                a=intDiv(a,16);
+               }
+                $('#showHex').text("HexaDecimal of "+n+" is : "+x);
+            }
+            });
+        });
+    </script>
+</head>
+<body style="background-color: rgba(26, 226, 149, 0.514);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <input type="number" class="m-2 rounded " placeholder="Enter the Number" id="number" required>  
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <button id="bin" class="btn-sm btn btn-info m-2 rounded">Convert to Binary</button>
+            <button id="oct" class="btn-sm btn btn-info m-2 rounded">Convert to Octal</button>          
+            <button id="hex" class="btn-sm btn btn-info m-2 rounded">Convert to HexaDecimal</button>          
+        </div>
+        <hr>
+        <div class="row justify-content-center strong">
+            <p id="showBin" class="m-2"><b></b></p>
+            <p id="showOct" class="m-2"><b></b></p> 
+            <p id="showHex" class="m-2"><b></b></p> 
+        </div>
+    </div>
+</body>
+</html>
